@@ -1,0 +1,1 @@
+while analyzing network traffic, I found an interesting PCAP file. at first look, nothing unusual stands out, but there might be something important hidden inside. can you find it?

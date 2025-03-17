@@ -1,0 +1,1 @@
+while managing my website, I discovered that a publicly accessible endpoint contained sensitive information. I need to make sure no one find it, but it might be too late.

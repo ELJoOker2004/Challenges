@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Forge: The Atomic Break-In</title>
+    <style>
+        /* Common Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e2f;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #2a2a40;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 1200px;
+            width: 100%;
+            margin: 2rem auto;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #00ffcc;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #00ffcc;
+        }
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #3a3a4f;
+            color: #ffffff;
+        }
+        button {
+            background-color: #00ffcc;
+            color: #1e1e2f;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #00ccaa;
+        }
+        .footer {
+            margin-top: 1.5rem;
+            font-size: 0.875rem;
+            color: #888;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .container {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Dashboard Styles */
+        .navbar {
+            background-color: #2a2a40;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        .navbar h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #00ffcc;
+        }
+        .welcome-message {
+            background-color: #2a2a40;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .welcome-message h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #00ffcc;
+        }
+        .welcome-message p {
+            font-size: 1.25rem;
+            margin: 0;
+        }
+        .dashboard-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .card {
+            background-color: #2a2a40;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            flex: 1 1 calc(33.333% - 2rem);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00ffcc;
+        }
+        .card p {
+            font-size: 1rem;
+            margin: 0;
+        }
+        video {
+				width: 50%; /* Make the video smaller */
+				border-radius: 10px;
+		}
+    </style>
+</head>
+<body>
+    {% if not authenticated %}
+    <!-- Login Page -->
+    <div class="container">
+        <h1>Cookie Forge: The Atomic Break-In</h1>
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="footer">
+            <p>Penetration Testing Challenge</p>
+        </div>
+    </div>
+    {% else %}
+        {% if role == "Admin" %}
+        <!-- Admin Dashboard -->
+        <div class="navbar">
+            <h1>Cookie Forge Dashboard</h1>
+            <button onclick="logout()">Logout</button>
+        </div>
+        <div class="container">
+            <div class="welcome-message">
+                <h2>Welcome, <span id="role">{{ role }}</span>!</h2>
+                <p id="message">{{ message }}</p>
+                <p id="flag">Flag: {{ flag }}</p>
+            </div>
+            <div class="dashboard-content">
+                <div class="card">
+                    <h3>Admin Video</h3>
+                    <video controls autoplay muted>
+    <source src="{{ url_for('static', filename='admin_video.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <!-- User Dashboard -->
+        <div class="navbar">
+            <h1>Cookie Forge Dashboard</h1>
+            <button onclick="logout()">Logout</button>
+        </div>
+        <div class="container">
+            <div class="welcome-message">
+                <h2>Welcome, <span id="role">{{ role }}</span>!</h2>
+                <p id="message">{{ message }}</p>
+            </div>
+            <div class="dashboard-content">
+                <div class="card">
+                    <h3>Profile</h3>
+                    <p>View and update your profile information.</p>
+                </div>
+                <div class="card">
+                    <h3>Settings</h3>
+                    <p>Configure your account settings.</p>
+                </div>
+                <div class="card">
+                    <h3>Activity</h3>
+                    <p>Check your recent activity and logs.</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endif %}
+
+    <script>
+        function logout() {
+            document.cookie = "auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>
+<!-- Reminder: To be removed later,
+        HMAC info
+        {
+            "message": "Debug information",
+            "secret_key": "supersecretkey"
+        }
+-->

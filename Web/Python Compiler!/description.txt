@@ -1,0 +1,10 @@
+A simple CTF challenge that allows users to execute Python code through a web interface to find and read a hidden flag file.
+
+- run by
+
+docker build -t python-ctf .
+docker run -p 5000:5000 python-ctf
+
+- access via
+
+http://localhost:5000

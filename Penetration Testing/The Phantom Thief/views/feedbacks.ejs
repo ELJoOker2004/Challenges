@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Feedback Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .feedbacks-list {
+            margin-top: 20px;
+        }
+        .feedback-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .feedback-item p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Feedback Viewer</h1>
+    <div class="feedbacks-list">
+        <h2>All Feedbacks</h2>
+        <% if (feedbacks.length > 0) { %>
+            <% feedbacks.forEach(feedback => { %>
+                <div class="feedback-item">
+                    <p><strong>ID:</strong> <%= feedback.id %></p>
+                    <p><strong>Feedback:</strong> <%- feedback.feedback %></p>
+                    <p><strong>Timestamp:</strong> <%= new Date(feedback.timestamp).toLocaleString() %></p>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No feedbacks available.</p>
+        <% } %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackMe Feedback System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>HackMe Feedback System</h1>
+        <p class="subtitle">Share your thoughts! Our admin bot will review them 🤖</p>
+
+        <!-- Feedback Form -->
+        <form id="feedbackForm">
+            <textarea 
+                id="feedback" 
+                name="feedback" 
+                placeholder="Enter your feedback..." 
+                required
+            ></textarea>
+            <br>
+            <button type="submit">Submit Feedback</button>
+        </form>
+
+        <!-- Status Message -->
+        <div id="statusMessage" class="status-message"></div>
+
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="theme-toggle">🌙 Dark Mode</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

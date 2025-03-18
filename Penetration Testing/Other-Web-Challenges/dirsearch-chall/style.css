@@ -1,0 +1,92 @@
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #0f0f2a, #1a1a3d);
+    color: #ff00ff;
+    text-align: center;
+    padding: 60px;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: rgba(15, 15, 42, 0.9);
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 30px rgba(255, 0, 255, 0.4);
+    border: 2px solid #ff00ff;
+    position: relative;
+    animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0px 0px 30px rgba(255, 0, 255, 0.4); }
+    50% { box-shadow: 0px 0px 40px rgba(255, 0, 255, 0.6); }
+    100% { box-shadow: 0px 0px 30px rgba(255, 0, 255, 0.4); }
+}
+
+h1 {
+    color: #00ffff;
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 20px rgba(0, 255, 255, 0.7);
+    margin-bottom: 30px;
+}
+
+.hint {
+    background: rgba(255, 0, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px dotted #00ffff;
+    margin: 25px auto;
+    max-width: 700px;
+    font-size: 1.1em;
+    font-weight: 300;
+    text-align: left;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #ff00ff, #00ffff);
+    color: #0f0f2a;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-20deg);
+    transition: all 0.5s ease;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 40px rgba(255, 0, 255, 0.8);
+}
+
+.btn:hover::before {
+    left: 100%;
+}

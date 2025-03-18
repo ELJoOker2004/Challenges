@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    image: php:7.4-apache
+    container_name: php-juggling-challenge
+    ports:
+      - "8089:80"
+    volumes:
+      - ./index.php:/var/www/html/index.php
+    command: >
+      bash -c "chown www-data:www-data /var/www/html/index.php && 
+               chmod 644 /var/www/html/index.php && 
+               apache2-foreground"

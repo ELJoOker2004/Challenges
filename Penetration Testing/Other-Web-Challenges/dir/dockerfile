@@ -1,0 +1,7 @@
+FROM php:7.4-apache
+COPY . /var/www/html/
+RUN a2enmod rewrite
+RUN chown -R www-data:www-data /var/www/html
+RUN chmod -R 755 /var/www/html
+RUN echo "<Directory /var/www/html>\n    AllowOverride All\n</Directory>" > /etc/apache2/conf-available/allow-override.conf && \
+    a2enconf allow-override

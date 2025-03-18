@@ -1,0 +1,10 @@
+FROM php:8.2-apache
+
+# Copy the web app
+COPY . /var/www/html/
+
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html && \
+    chmod -R 755 /var/www/html
+
+CMD ["apache2-foreground"]

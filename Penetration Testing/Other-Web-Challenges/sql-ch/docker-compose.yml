@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8086:80"  # Expose web app on localhost:8081
+    depends_on:
+      - db
+    environment:
+      - MYSQL_HOST=db
+
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=supersecureroot
+      - MYSQL_DATABASE=vault_db
+      - MYSQL_USER=ctf_user
+      - MYSQL_PASSWORD=ctf_pass
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Initialize database
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]  # Check DB health

@@ -1,0 +1,7 @@
+FROM php:8.2-apache
+
+# Install MySQLi and enable Apache rewrite module
+RUN docker-php-ext-install mysqli && a2enmod rewrite
+
+# Copy challenge files into the web server directory
+COPY . /var/www/html/

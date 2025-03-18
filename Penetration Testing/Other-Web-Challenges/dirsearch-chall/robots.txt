@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /admin
+Disallow: /hidden_backup
+Disallow: /logs

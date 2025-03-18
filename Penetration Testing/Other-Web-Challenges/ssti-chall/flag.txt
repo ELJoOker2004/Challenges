@@ -1,0 +1,1 @@
+FLAG{SSTI_Bypass_With!_Hex_En$$coding}

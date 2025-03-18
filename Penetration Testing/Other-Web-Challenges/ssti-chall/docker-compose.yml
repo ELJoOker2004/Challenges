@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    ports:
+      - "8088:80"
+    volumes:
+      - ./flag.txt:/flag.txt  # Mount the flag file

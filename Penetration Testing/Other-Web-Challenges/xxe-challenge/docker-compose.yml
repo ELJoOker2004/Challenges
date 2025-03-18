@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8082:80"  # Expose the challenge on port 8082

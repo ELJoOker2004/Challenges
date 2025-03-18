@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Reports</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3a86ff;
+            --danger: #e74c3c;
+            --dark: #1a1a2e;
+            --dark-light: #22223b;
+            --text: #e0e0e0;
+            --text-muted: #aaaaaa;
+            --border: #444444;
+            --terminal-bg: #101020;
+            --terminal-text: #2ecc71;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            background-color: var(--dark-light);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--danger);
+            font-weight: 600;
+            margin-bottom: 16px;
+            font-size: 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .logs {
+            background-color: var(--terminal-bg);
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px auto;
+            color: var(--terminal-text);
+            font-family: 'Courier New', monospace;
+            text-align: left;
+            max-width: 500px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .logs p {
+            color: var(--terminal-text);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .logs p:last-child {
+            margin-bottom: 0;
+        }
+
+        .logs strong {
+            color: var(--text);
+        }
+
+        .btn {
+            background-color: var(--danger);
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+        }
+
+        .hint {
+            font-style: italic;
+            color: var(--text-muted);
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Blinking cursor animation */
+        .cursor::after {
+            content: '█';
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Access denied animation */
+        .pulse {
+            animation: pulse 2s;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-exclamation-triangle"></i> Restricted Area</h1>
+        <p>Only authorized users can access these reports.</p>
+        
+        <div class="logs">
+            <p>Loading system logs...<span class="cursor"></span></p>
+            <p><strong>[LOG]</strong> User attempted to access /admin</p>
+            <p><strong>[LOG]</strong> Invalid session detected</p>
+            <p><strong>[ERROR]</strong> System access denied</p>
+        </div>
+        
+        <p class="hint">Hint: Look deeper into how XML is processed.</p>
+        
+        <button class="btn" onclick="denyAccess()">
+            <i class="fas fa-key"></i> Request Access
+        </button>
+    </div>
+
+    <script>
+        function denyAccess() {
+            alert('Access Denied!');
+            document.querySelector('.container').classList.add('pulse');
+            setTimeout(() => {
+                document.querySelector('.container').classList.remove('pulse');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

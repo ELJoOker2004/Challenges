@@ -1,0 +1,14 @@
+# dockerfile
+FROM php:8.2-apache
+
+# Copy all files to Apache root
+COPY . /var/www/html/
+
+# Copy flag.txt to the web root
+COPY flag.txt /var/www/html/flag.txt
+
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html && \
+    chmod -R 755 /var/www/html
+
+CMD ["apache2-foreground"]

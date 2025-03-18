@@ -1,0 +1,13 @@
+FROM php:8.2-apache
+
+# Disable PHP short_open_tag to prevent XML conflicts
+RUN echo "short_open_tag = Off" > /usr/local/etc/php/conf.d/short-open-tag.ini
+
+# Copy web files
+COPY index.php /var/www/html/index.php
+
+# Copy fake admin panel
+COPY fake-admin /var/www/html/admin
+
+# Copy flag file into the container
+COPY secret/flag.txt /flag.txt

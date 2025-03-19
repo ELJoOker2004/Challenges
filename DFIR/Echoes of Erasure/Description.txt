@@ -1,0 +1,5 @@
+Echoes of Erasure
+
+
+
+A disk image lies before you. A file’s been wiped from it, but the flag remains somewhere in the void. Recover it.
